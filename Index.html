@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>XYZ Doctors | Bhubaneswar Clinic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #005b96;
+      --primary-dark: #004070;
+      --accent: #00a88e;
+      --bg-light: #f5f7fb;
+      --text-main: #222;
+      --text-muted: #666;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.08);
+      --transition-fast: 0.2s ease-in-out;
+      font-size: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Top Contact Bar */
+    .top-bar {
+      background: #f0f4fb;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      padding: 8px 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .top-bar span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffffcc;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-inner {
+      padding: 10px 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      letter-spacing: 0.03em;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 4px;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff !important;
+      font-weight: 600;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .nav-cta:hover {
+      background: #02977f;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      padding: 40px 6vw 70px;
+      align-items: center;
+      gap: 40px;
+      background: radial-gradient(circle at top left, #e5f3ff, #ffffff);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("https://images.pexels.com/photos/7580255/pexels-photo-7580255.jpeg?auto=compress&cs=tinysrgb&w=1600");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    .hero-content,
+    .hero-image {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #e0f5ff;
+      color: var(--primary-dark);
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+
+    .hero-tag span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00c853;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      margin-bottom: 14px;
+      color: #102542;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 22px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+    }
+
+    .hero-badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #ffffffcc;
+      border: 1px solid #e0e7f5;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow-soft);
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid #c7d5eb;
+      background: #ffffffaa;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta strong {
+      color: var(--primary);
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 18px;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card img {
+      border-radius: 18px;
+      margin-bottom: 14px;
+      height: 210px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .hero-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card .card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #00c853;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .hero-card .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      background: #f4fbf3;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 6vw;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 28px;
+    }
+
+    .section-header h2 {
+      font-size: 1.7rem;
+      margin-bottom: 6px;
+      color: #102542;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* About */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-highlight {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+      font-size: 0.85rem;
+    }
+
+    .about-pill {
+      background: #f3f7ff;
+      border-radius: 999px;
+      padding: 6px 10px;
+      text-align: center;
+    }
+
+    .about-image-card {
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+
+    .about-image-card img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .about-tag-card {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      padding: 10px 12px;
+      border-radius: 18px;
+      background: #ffffffee;
+      font-size: 0.8rem;
+      max-width: 210px;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: 0 6px 20px rgba(15, 35, 52, 0.06);
+      border: 1px solid #edf0f7;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      cursor: default;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      background: #e6f3ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Doctors */
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .doctor-card {
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 9px 24px rgba(15, 35, 52, 0.07);
+      border: 1px solid #edf0f7;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .doctor-card img {
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .doctor-body {
+      padding: 14px 16px 16px;
+    }
+
+    .doctor-body h3 {
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+
+    .doctor-specialty {
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .doctor-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .doctor-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.75rem;
+    }
+
+    .doctor-tag {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f4f7ff;
+      color: var(--text-muted);
+    }
+
+    /* Appointment Section */
+    .appointment-section {
+      background: linear-gradient(135deg, #f1f6ff, #ffffff);
+    }
+
+    .appointment-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .appointment-list {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .appointment-list ul {
+      margin-left: 18px;
+      margin-top: 10px;
+    }
+
+    .appointment-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #e3e9f6;
+    }
+
+    .appointment-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .appointment-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .form-grid-full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+      display: block;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid #ccd6ea;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border var(--transition-fast), box-shadow var(--transition-fast);
+      font-family: inherit;
+      background: #fdfdff;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px #0077ff22;
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr;
+      gap: 14px;
+    }
+
+    .gallery-grid div {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .gallery-grid img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-small {
+      display: grid;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    /* Testimonials Slider */
+    .testimonials {
+      background: var(--bg-light);
+    }
+
+    .testimonial-slider {
+      max-width: 850px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 20px 24px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #e0e6f7;
+      min-height: 160px;
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .testimonial-author strong {
+      color: var(--primary-dark);
+    }
+
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .testimonial-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ccd5f0;
+      cursor: pointer;
+    }
+
+    .testimonial-dot.active {
+      background: var(--primary);
+      width: 18px;
+      border-radius: 999px;
+    }
+
+    /* Blog / Health Tips */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .blog-card {
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(15, 35, 52, 0.06);
+      border: 1px solid #edf0f7;
+      padding: 14px 16px 18px;
+      font-size: 0.85rem;
+    }
+
+    .blog-tag {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .blog-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .blog-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    /* Google Reviews at bottom */
+    .google-reviews {
+      padding: 55px 6vw 40px;
+      background: #0f172a;
+      color: #f9fafb;
+    }
+
+    .google-reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .google-rating-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #111827;
+      border: 1px solid #1f2937;
+      font-size: 0.85rem;
+    }
+
+    .google-rating-badge span.star {
+      font-size: 1.1rem;
+      color: #fbbf24;
+    }
+
+    .google-review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .google-review-card {
+      background: #020617;
+      border-radius: 18px;
+      padding: 14px 16px 16px;
+      border: 1px solid #1f2937;
+      font-size: 0.85rem;
+    }
+
+    .google-review-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .google-review-stars {
+      color: #fbbf24;
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+    }
+
+    .google-review-text {
+      color: #e5e7eb;
+      font-size: 0.8rem;
+    }
+
+    /* Contact & Footer */
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      border-radius: 20px;
+      background: #fff;
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #e5eaf5;
+    }
+
+    .contact-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-list {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-list p {
+      margin-bottom: 6px;
+    }
+
+    .map-embed {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #e5eaf5;
+      min-height: 260px;
+    }
+
+    .map-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    footer {
+      background: #020617;
+      color: #9ca3af;
+      padding: 20px 6vw 18px;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .footer-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .social-pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      color: #e5e7eb;
+      font-size: 0.8rem;
+    }
+
+    .social-pill:hover {
+      background: #111827;
+    }
+
+    /* Floating Buttons */
+    .floating-buttons {
+      position: fixed;
+      right: 16px;
+      bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 200;
+    }
+
+    .floating-btn {
+      border-radius: 999px;
+      padding: 9px 12px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+      border: none;
+    }
+
+    .floating-btn.whatsapp {
+      background: #22c55e;
+    }
+
+    .floating-btn span.icon {
+      font-size: 1rem;
+    }
+
+    /* Accessibility controls */
+    .accessibility-controls {
+      position: fixed;
+      left: 12px;
+      bottom: 18px;
+      background: #ffffffee;
+      border-radius: 999px;
+      padding: 6px 8px;
+      display: inline-flex;
+      gap: 4px;
+      box-shadow: 0 8px 24px rgba(15, 35, 52, 0.2);
+      font-size: 0.75rem;
+      align-items: center;
+    }
+
+    .accessibility-controls button {
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      padding: 4px 8px;
+      background: #f9fafb;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero,
+      .about-layout,
+      .appointment-layout,
+      .contact-section {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 24px;
+      }
+
+      .hero-image {
+        justify-content: flex-start;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .doctors-grid,
+      .blog-grid,
+      .google-review-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .doctors-grid,
+      .blog-grid,
+      .google-review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-small {
+        grid-template-rows: 1fr;
+      }
+
+      section {
+        padding-inline: 5vw;
+      }
+
+      .top-bar {
+        justify-content: center;
+      }
+
+      .accessibility-controls {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 12px;
+      }
+
+      .floating-buttons {
+        right: 12px;
+        bottom: 56px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Contact Bar -->
+  <div class="top-bar">
+    <span>📍 XYZ Doctors, Bhubaneswar, Odisha</span>
+    <span>📞 +91-98765 43210 &nbsp; | &nbsp; ⏰ Mon–Sat: 9:00 AM – 8:00 PM</span>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">XYZ<span>Doctors</span></div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="#appointment" class="nav-cta">Book Appointment</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="dot"></span> Quality care in Bhubaneswar
+      </div>
+      <h1>
+        Your health, our doctors.<br />
+        <span>Trusted care under one roof.</span>
+      </h1>
+      <p class="hero-subtitle">
+        XYZ Doctors is a multispeciality clinic in Bhubaneswar offering expert consultation, diagnostics, and day-care procedures with a focus on empathy, safety, and evidence-based treatment.
+      </p>
+
+      <div class="hero-badges">
+        <div class="hero-badge">👨‍⚕️ 15+ Specialist Doctors</div>
+        <div class="hero-badge">⭐ 4.9 / 5 average Google rating</div>
+        <div class="hero-badge">🏥 10,000+ patients treated</div>
+      </div>
+
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="scrollToSection('appointment')">Book an Appointment</button>
+        <button class="btn-outline" onclick="window.location.href='tel:+919876543210'">
+          📞 Call Clinic
+        </button>
+      </div>
+
+      <div class="hero-meta">
+        <strong>Same-day appointments</strong> available for selected specialties.
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <div class="hero-card">
+        <span class="card-badge">Live now • OPD in progress</span>
+        <img src="https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Doctors consulting patient" />
+        <h3>Modern facilities, expert team</h3>
+        <p>
+          Fully equipped consultation rooms, on-site lab, digital X-ray and pharmacy to keep your complete care in one place.
+        </p>
+        <div class="rating-pill">
+          ⭐ 4.9 • 320+ Google reviews
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-header">
+      <h2>About XYZ Doctors</h2>
+      <p>
+        A team of experienced specialists in Bhubaneswar working together to provide holistic, coordinated care so that you and your family can stay healthy at every stage of life.
+      </p>
+    </div>
+
+    <div class="about-layout">
+      <div>
+        <h3>Compassionate care backed by clinical expertise</h3>
+        <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted);">
+          At XYZ Doctors, every patient is treated as a person, not just a case. Our consultants spend time listening, explaining, and guiding you through diagnosis, treatment, and follow-up.
+          We believe in clear communication, transparent pricing, and ethical medical practice.
+        </p>
+        <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted);">
+          The clinic is designed to be senior-friendly, child-friendly, and fully air-conditioned with comfortable waiting areas, separate procedure rooms, and clean restrooms.
+        </p>
+
+        <div class="about-highlight">
+          <div class="about-pill">24×7 emergency call support</div>
+          <div class="about-pill">Digital prescriptions & records</div>
+          <div class="about-pill">On-site diagnostics & lab</div>
+        </div>
+      </div>
+      <div class="about-image-card">
+        <img src="https://images.pexels.com/photos/7578801/pexels-photo-7578801.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Clinic interior" />
+        <div class="about-tag-card">
+          🌿 Calm, clean and modern clinic in Bhubaneswar with separate waiting areas for adults and children to ensure a smooth experience for every visit.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="section-header">
+      <h2>Our Key Services</h2>
+      <p>Comprehensive care across major specialties, diagnostics and preventive health.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🩺</div>
+        <h3>General Medicine</h3>
+        <p>Fever, infections, lifestyle diseases, annual check-ups, and long-term condition management.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👶</div>
+        <h3>Pediatrics</h3>
+        <p>Child vaccinations, growth monitoring, nutrition guidance, and infection management.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">❤️</div>
+        <h3>Cardiology</h3>
+        <p>Heart check-ups, ECG, stress tests, hypertension and cholesterol management.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🦴</div>
+        <h3>Orthopedics</h3>
+        <p>Bone and joint care, sports injuries, arthritis and post-fracture rehabilitation.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧪</div>
+        <h3>Diagnostics & Lab</h3>
+        <p>Blood tests, urine tests, digital X-ray, ECG and basic imaging, with fast report turnaround.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👁️</div>
+        <h3>Eye & ENT</h3>
+        <p>Routine vision checks, refraction, ear and throat infections and minor procedures.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3>Mental Wellness</h3>
+        <p>Counselling, stress management, anxiety and depression support in a safe space.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🩻</div>
+        <h3>Preventive Health Packages</h3>
+        <p>Age-specific health packages for early detection and better long-term health.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctors -->
+  <section id="doctors">
+    <div class="section-header">
+      <h2>Meet Our Doctors</h2>
+      <p>Experienced consultants with a patient-first approach.</p>
+    </div>
+
+    <div class="doctors-grid">
+      <div class="doctor-card">
+        <img src="https://images.pexels.com/photos/8460047/pexels-photo-8460047.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Dr. Sharma" />
+        <div class="doctor-body">
+          <h3>Dr. Arjun Sharma</h3>
+          <div class="doctor-specialty">Senior Consultant – Internal Medicine</div>
+          <div class="doctor-meta">MBBS, MD (Medicine) • 15+ years experience</div>
+          <div class="doctor-tags">
+            <span class="doctor-tag">Diabetes & Hypertension</span>
+            <span class="doctor-tag">Adult Vaccination</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="https://images.pexels.com/photos/5452291/pexels-photo-5452291.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Dr. Patel" />
+        <div class="doctor-body">
+          <h3>Dr. Neha Patel</h3>
+          <div class="doctor-specialty">Consultant Pediatrician</div>
+          <div class="doctor-meta">MBBS, MD (Pediatrics) • 10+ years experience</div>
+          <div class="doctor-tags">
+            <span class="doctor-tag">Vaccination</span>
+            <span class="doctor-tag">Child Nutrition</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="https://images.pexels.com/photos/3845762/pexels-photo-3845762.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Dr. Rao" />
+        <div class="doctor-body">
+          <h3>Dr. Karan Rao</h3>
+          <div class="doctor-specialty">Orthopedic & Sports Injury Specialist</div>
+          <div class="doctor-meta">MBBS, MS (Ortho) • 12+ years experience</div>
+          <div class="doctor-tags">
+            <span class="doctor-tag">Joint & Spine Care</span>
+            <span class="doctor-tag">Sports Injuries</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment -->
+  <section id="appointment" class="appointment-section">
+    <div class="section-header">
+      <h2>Book an Appointment</h2>
+      <p>Fill in your details and our team will call or confirm your slot shortly.</p>
+    </div>
+
+    <div class="appointment-layout">
+      <div class="appointment-list">
+        <h3>How booking works</h3>
+        <p style="margin-top: 8px;">
+          Once you submit the form, our front desk team will:
+        </p>
+        <ul>
+          <li>Check doctor availability for your preferred date and time.</li>
+          <li>Call or WhatsApp you to confirm, reschedule or clarify any questions.</li>
+          <li>Share appointment confirmation along with clinic directions.</li>
+        </ul>
+        <p style="margin-top: 10px;">
+          For urgent concerns or emergencies, please call us directly at <strong>+91-98765 43210</strong>.
+        </p>
+      </div>
+
+      <div class="appointment-card">
+        <h3>Request an Appointment</h3>
+        <p>All fields marked * are mandatory.</p>
+        <form onsubmit="event.preventDefault(); alert('Thank you! We have received your appointment request.');">
+          <div class="form-grid">
+            <div>
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" required />
+            </div>
+            <div>
+              <label for="phone">Mobile Number *</label>
+              <input type="tel" id="phone" required />
+            </div>
+            <div>
+              <label for="email">Email (optional)</label>
+              <input type="email" id="email" />
+            </div>
+            <div>
+              <label for="specialty">Specialty *</label>
+              <select id="specialty" required>
+                <option value="">Select</option>
+                <option>General Medicine</option>
+                <option>Pediatrics</option>
+                <option>Cardiology</option>
+                <option>Orthopedics</option>
+                <option>Eye / ENT</option>
+                <option>Mental Wellness</option>
+              </select>
+            </div>
+            <div>
+              <label for="date">Preferred Date *</label>
+              <input type="date" id="date" required />
+            </div>
+            <div>
+              <label for="time">Preferred Time Slot *</label>
+              <select id="time" required>
+                <option value="">Select</option>
+                <option>09:00 AM – 11:00 AM</option>
+                <option>11:00 AM – 01:00 PM</option>
+                <option>04:00 PM – 06:00 PM</option>
+                <option>06:00 PM – 08:00 PM</option>
+              </select>
+            </div>
+            <div class="form-grid-full">
+              <label for="message">Reason for visit / symptoms</label>
+              <textarea id="message" placeholder="Briefly describe your concern"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" style="margin-top: 10px; width: 100%;">
+            Submit Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="section-header">
+      <h2>Clinic Gallery</h2>
+      <p>Take a quick look at our space before you visit.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div>
+        <img src="https://images.pexels.com/photos/12660372/pexels-photo-12660372.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Reception area" />
+      </div>
+      <div class="gallery-small">
+        <div>
+          <img src="https://images.pexels.com/photos/3846111/pexels-photo-3846111.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Consultation room" />
+        </div>
+        <div>
+          <img src="https://images.pexels.com/photos/7089391/pexels-photo-7089391.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Lab and diagnostics" />
+        </div>
+      </div>
+      <div class="gallery-small">
+        <div>
+          <img src="https://images.pexels.com/photos/6129509/pexels-photo-6129509.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Waiting lounge" />
+        </div>
+        <div>
+          <img src="https://images.pexels.com/photos/8460128/pexels-photo-8460128.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Pharmacy counter" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonials">
+    <div class="section-header">
+      <h2>Patient Testimonials</h2>
+      <p>What our patients say about their experience at XYZ Doctors.</p>
+    </div>
+
+    <div class="testimonial-slider">
+      <div class="testimonial-card" id="testimonial-card">
+        <!-- Content filled by JS -->
+      </div>
+      <div class="testimonial-dots" id="testimonial-dots">
+        <!-- Dots filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog / Health Tips -->
+  <section id="blog">
+    <div class="section-header">
+      <h2>Health Tips From Our Doctors</h2>
+      <p>Simple, practical advice you can follow at home.</p>
+    </div>
+
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-tag">Heart Health</div>
+        <h3>5 signs you shouldn’t ignore before a heart check-up</h3>
+        <div class="blog-meta">By Dr. Arjun Sharma • 3 min read</div>
+        <p>
+          Breathlessness on light exertion, chest heaviness, fatigue, ankle swelling and irregular heartbeat are signals
+          your heart needs attention. Early evaluation can prevent complications.
+        </p>
+      </div>
+      <div class="blog-card">
+        <div class="blog-tag">Child Care</div>
+        <h3>Building a strong immunity routine for children</h3>
+        <div class="blog-meta">By Dr. Neha Patel • 4 min read</div>
+        <p>
+          Sleep, nutrition, regular outdoor play and timely vaccinations together create a strong foundation for your
+          child’s immunity and development.
+        </p>
+      </div>
+      <div class="blog-card">
+        <div class="blog-tag">Everyday Health</div>
+        <h3>Desk job? Protect your back and neck</h3>
+        <div class="blog-meta">By Dr. Karan Rao • 2 min read</div>
+        <p>
+          Right chair height, screen at eye level, walking breaks every 45 minutes and simple stretching can reduce
+          back pain risks for most working professionals.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Reviews at bottom -->
+  <section class="google-reviews">
+    <div class="google-reviews-header">
+      <div>
+        <h2 style="font-size: 1.3rem; color: #f9fafb; margin-bottom: 4px;">
+          Loved by our patients on Google
+        </h2>
+        <p style="font-size: 0.85rem; color: #9ca3af;">
+          Real feedback from families who trust XYZ Doctors in Bhubaneswar for their care.
+        </p>
+      </div>
+      <div class="google-rating-badge">
+        <span class="star">⭐</span>
+        <span><strong>4.9 / 5</strong> • 320+ Google reviews</span>
+      </div>
+    </div>
+
+    <div class="google-review-grid">
+      <div class="google-review-card">
+        <div class="google-review-name">Priya S.</div>
+        <div class="google-review-stars">★★★★★</div>
+        <p class="google-review-text">
+          Very neat clinic with polite staff. The doctor took time to explain my reports and treatment options in simple
+          language. Highly recommended.
+        </p>
+      </div>
+      <div class="google-review-card">
+        <div class="google-review-name">Rahul Mehta</div>
+        <div class="google-review-stars">★★★★★</div>
+        <p class="google-review-text">
+          Went here for my parents’ regular check-up. Minimal waiting time, clear communication and fair pricing.
+        </p>
+      </div>
+      <div class="google-review-card">
+        <div class="google-review-name">Anjali &amp; Family</div>
+        <div class="google-review-stars">★★★★★</div>
+        <p class="google-review-text">
+          We visit XYZ Doctors for everything from kids’ vaccination to lab tests. It’s convenient to have all services
+          in one clinic.
+        </p>
+      </div>
+    </div>
+    <!-- To integrate real Google reviews, replace this block with the official Google reviews widget or embed script. -->
+  </section>
+
+  <!-- Contact & Map -->
+  <section id="contact">
+    <div class="section-header">
+      <h2>Contact & Location</h2>
+      <p>Reach out for appointments, emergencies or general queries.</p>
+    </div>
+
+    <div class="contact-section">
+      <div class="contact-card">
+        <h3>XYZ Doctors</h3>
+        <div class="contact-list">
+          <p><strong>Address:</strong></p>
+          <p>XYZ Doctors, 2nd Floor, Harmony Plaza, Main Road, Near Key Landmark,</p>
+          <p>Bhubaneswar – 751001, Odisha, India</p>
+
+          <p style="margin-top: 10px;"><strong>Phone:</strong> +91-98765 43210</p>
+          <p><strong>Email:</strong> info@xyzdoctors.com</p>
+
+          <p style="margin-top: 10px;"><strong>Timings:</strong></p>
+          <p>Mon–Sat: 9:00 AM – 8:00 PM</p>
+          <p>Sun: 10:00 AM – 1:00 PM (selected specialties)</p>
+
+          <p style="margin-top: 10px;"><strong>Social media:</strong></p>
+          <p>Follow us on Facebook, Instagram, LinkedIn and YouTube for updates and health tips.</p>
+
+          <p style="margin-top: 10px;"><strong>Accepted payments:</strong></p>
+          <p>UPI • Credit / Debit Cards • Net Banking • Cash</p>
+
+          <p style="margin-top: 10px;"><strong>Insurance support:</strong></p>
+          <p>
+            We help with documentation for select health insurance and corporate health plans. Please contact the front
+            desk for details.
+          </p>
+        </div>
+      </div>
+
+      <div class="map-embed">
+        <!-- Replace src below with your exact clinic location from Google Maps -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.898382783401!2d85.806!3d20.296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909c3c0b00001%3A0x0!2sBhubaneswar%2C%20Odisha!5e0!3m2!1sen!2sin!4v1700000000000"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <span>© <span id="year"></span> XYZ Doctors, Bhubaneswar.</span>
+      <span>All rights reserved.</span>
+    </div>
+    <div class="footer-socials">
+      <a href="#" class="social-pill">Facebook</a>
+      <a href="#" class="social-pill">Instagram</a>
+      <a href="#" class="social-pill">LinkedIn</a>
+      <a href="#" class="social-pill">YouTube</a>
+    </div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <div class="floating-buttons">
+    <button class="floating-btn" onclick="window.location.href='tel:+919876543210'">
+      <span class="icon">🚑</span> Emergency Call
+    </button>
+    <button class="floating-btn whatsapp" onclick="window.open('https://wa.me/919876543210', '_blank')">
+      <span class="icon">🟢</span> WhatsApp Chat
+    </button>
+  </div>
+
+  <!-- Accessibility Controls -->
+  <div class="accessibility-controls">
+    <span>Text size:</span>
+    <button onclick="setFontSize(15)">A-</button>
+    <button onclick="setFontSize(16)">A</button>
+    <button onclick="setFontSize(18)">A+</button>
+  </div>
+
+  <script>
+    // Smooth scroll to section
+    function scrollToSection(id) {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    // Testimonials data
+    const testimonials = [
+      {
+        quote:
+          "The doctors here listen patiently and explain everything very clearly. I felt very reassured after my consultation.",
+        name: "Sneha R.",
+        detail: "Visited for general health check-up"
+      },
+      {
+        quote:
+          "We have been consulting the pediatrician here in Bhubaneswar for our baby since birth. The clinic staff are friendly and supportive.",
+        name: "Vikas & Meera",
+        detail: "Parents of a 2-year-old"
+      },
+      {
+        quote:
+          "Got my tests and consultation done in the same visit. The facility is clean, organized and not overcrowded.",
+        name: "Anand K.",
+        detail: "Visited for preventive health package"
+      }
+    ];
+
+    let currentTestimonial = 0;
+
+    function renderTestimonial(index) {
+      const card = document.getElementById("testimonial-card");
+      const dotsContainer = document.getElementById("testimonial-dots");
+      if (!card || !dotsContainer) return;
+
+      const t = testimonials[index];
+      card.innerHTML = `
+        <div class="testimonial-quote">“${t.quote}”</div>
+        <div class="testimonial-author"><strong>${t.name}</strong> • ${t.detail}</div>
+      `;
+
+      dotsContainer.innerHTML = testimonials
+        .map(
+          (item, i) =>
+            `<div class="testimonial-dot ${i === index ? "active" : ""}" onclick="goToTestimonial(${i})"></div>`
+        )
+        .join("");
+    }
+
+    function goToTestimonial(index) {
+      currentTestimonial = index;
+      renderTestimonial(currentTestimonial);
+    }
+
+    function autoRotateTestimonials() {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      renderTestimonial(currentTestimonial);
+    }
+
+    // Accessibility font size control
+    function setFontSize(size) {
+      document.documentElement.style.fontSize = size + "px";
+    }
+
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Init
+    renderTestimonial(currentTestimonial);
+    setInterval(autoRotateTestimonials, 7000);
+  </script>
+</body>
+</html>
